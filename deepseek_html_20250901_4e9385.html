@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Ouvindo Angústias - Estudantes de Medicina</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --main-color: #2c3e50;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--main-color) 0%, #1a2530 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background-color: var(--main-color);
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        footer {
+            background-color: var(--main-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .quote {
+            font-style: italic;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        
+        .methodology-step {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho Hero Section -->
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4">Ouvindo as Angústias</h1>
+                    <p class="lead">Um projeto de extensão para compreender e abordar as principais preocupações dos estudantes de medicina</p>
+                    <a href="#participar" class="btn btn-light btn-lg mt-3">Como Participar</a>
+                </div>
+                <div class="col-lg-4 d-none d-lg-block text-center">
+                    <svg width="200" height="200" viewBox="0 0 200 200">
+                        <rect width="200" height="200" fill="#ecf0f1" fill-opacity="0.2" rx="20"/>
+                        <circle cx="100" cy="80" r="40" fill="#ecf0f1"/>
+                        <rect x="60" y="130" width="80" height="40" fill="#ecf0f1"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Sobre o Projeto -->
+    <section class="container py-5">
+        <h2 class="section-title">Sobre o Projeto</h2>
+        <div class="row">
+            <div class="col-lg-6">
+                <p>Este projeto de extensão tem como objetivo criar um espaço seguro e anônimo para que estudantes de medicina possam compartilhar suas principais angústias, medos e preocupações relacionadas ao curso e à futura profissão.</p>
+                <p>Muitas vezes, a pressão acadêmica e as exigências da formação médica podem gerar sentimentos que não são devidamente expressos ou discutidos. Através desta iniciativa, buscamos:</p>
+                <ul>
+                    <li>Identificar as principais fontes de estresse e ansiedade</li>
+                    <li>Promover discussões saudáveis sobre saúde mental</li>
+                    <li>Fornecer dados para desenvolver ações de apoio ao estudante</li>
+                    <li>Reduzir o estigma em torno de vulnerabilidades emocionais</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Metodologia</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="methodology-step">
+                            <h6>1. Coleta de Depoimentos</h6>
+                            <p>Uma urna fechada será disponibilizada com papéis ao lado para coleta anônima de relatos.</p>
+                        </div>
+                        <div class="methodology-step">
+                            <h6>2. Análise Categorizada</h6>
+                            <p>As respostas serão categorizadas por temas comuns para identificar padrões.</p>
+                        </div>
+                        <div class="methodology-step">
+                            <h6>3. Apresentação dos Resultados</h6>
+                            <p>Os dados compilados serão divulgados para a comunidade acadêmica.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Resultados (exemplo) -->
+    <section class="container py-5 bg-light">
+        <h2 class="section-title">Resultados Preliminares</h2>
+        <p class="text-center mb-5">Os gráficos abaixo mostram exemplos de como os dados podem ser apresentados após a coleta.</p>
+        
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0">Principais Fontes de Angústia</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="concernsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-0">Distribuição por Período/Ano</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="yearChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="stat-box">
+                    <div class="stat-number">72%</div>
+                    <p>dos estudantes relatam estresse relacionado à carga horária</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-box">
+                    <div class="stat-number">64%</div>
+                    <p>mencionam preocupação com sua saúde mental</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-box">
+                    <div class="stat-number">58%</div>
+                    <p>expressam medo de não estarem preparados para a profissão</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-5">
+            <h4 class="text-center mb-4">Depoimentos Anônimos</h4>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="quote">
+                        "Sinto que não tenho tempo para nada além da medicina. Minhas relações pessoais estão sofrendo muito."
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="quote">
+                        "Tenho medo constante de não ser bom o suficiente e cometer erros que afetem meus pacientes no futuro."
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="quote">
+                        "A pressão por notas altas e especializações concorridas me consome todos os dias."
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="quote">
+                        "Vejo colegas desenvolvendo ansiedade e depressão, mas temos medo de falar sobre isso abertamente."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Como Participar -->
+    <section id="participar" class="container py-5">
+        <h2 class="section-title">Como Participar</h2>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Presencialmente</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Procure a urna disponível no departamento de medicina. Você encontrará:</p>
+                        <ul>
+                            <li>Uma caixa totalmente fechada para garantir o anonimato</li>
+                            <li>Papéis e canetas para escrever seu relato</li>
+                            <li>Instruções claras sobre como participar</li>
+                        </ul>
+                        <p><strong>Localização:</strong> Hall principal do departamento de medicina</p>
+                        <p><strong>Período:</strong> De 15/05 a 30/06</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Digitalmente (opcional)</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Caso prefira, você também pode participar através do formulário online abaixo:</p>
+                        <form id="participationForm">
+                            <div class="mb-3">
+                                <label for="periodo" class="form-label">Período/Ano do Curso</label>
+                                <select class="form-select" id="periodo" required>
+                                    <option value="" selected disabled>Selecione...</option>
+                                    <option value="1">1º ano</option>
+                                    <option value="2">2º ano</option>
+                                    <option value="3">3º ano</option>
+                                    <option value="4">4º ano</option>
+                                    <option value="5">5º ano</option>
+                                    <option value="6">6º ano</option>
+                                    <option value="residente">Residência</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="depoimento" class="form-label">Compartilhe sua angústia principal (mantenha o anonimato)</label>
+                                <textarea class="form-control" id="depoimento" rows="4" placeholder="Escreva aqui o que mais lhe aflige como estudante de medicina..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar Anonimamente</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Projeto de Extensão: Ouvindo as Angústias</h5>
+                    <p>Um espaço seguro para vozes que precisam ser ouvidas</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>Departamento de Medicina</p>
+                    <p>Universidade [Nome da Universidade]</p>
+                    <p>contato@projetoangustias.edu.br</p>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4" style="background-color: rgba(255,255,255,0.2)">
+            <div class="text-center">
+                <p class="mb-0">© 2023 Projeto Ouvindo as Angústias. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts para os gráficos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gráfico de principais preocupações
+            const concernsCtx = document.getElementById('concernsChart').getContext('2d');
+            const concernsChart = new Chart(concernsCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Carga horária', 'Pressão por notas', 'Saúde mental', 'Preparo para a profissão', 'Relações pessoais'],
+                    datasets: [{
+                        label: '% de estudantes que mencionaram',
+                        data: [72, 68, 64, 58, 45],
+                        backgroundColor: [
+                            'rgba(52, 152, 219, 0.7)',
+                            'rgba(46, 204, 113, 0.7)',
+                            'rgba(155, 89, 182, 0.7)',
+                            'rgba(241, 196, 15, 0.7)',
+                            'rgba(230, 126, 34, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(52, 152, 219, 1)',
+                            'rgba(46, 204, 113, 1)',
+                            'rgba(155, 89, 182, 1)',
+                            'rgba(241, 196, 15, 1)',
+                            'rgba(230, 126, 34, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Gráfico de distribuição por ano
+            const yearCtx = document.getElementById('yearChart').getContext('2d');
+            const yearChart = new Chart(yearCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['1º ano', '2º ano', '3º ano', '4º ano', '5º ano', '6º ano', 'Residência'],
+                    datasets: [{
+                        data: [15, 18, 22, 17, 14, 9, 5],
+                        backgroundColor: [
+                            'rgba(52, 152, 219, 0.7)',
+                            'rgba(46, 204, 113, 0.7)',
+                            'rgba(155, 89, 182, 0.7)',
+                            'rgba(241, 196, 15, 0.7)',
+                            'rgba(230, 126, 34, 0.7)',
+                            'rgba(231, 76, 60, 0.7)',
+                            'rgba(149, 165, 166, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(52, 152, 219, 1)',
+                            'rgba(46, 204, 113, 1)',
+                            'rgba(155, 89, 182, 1)',
+                            'rgba(241, 196, 15, 1)',
+                            'rgba(230, 126, 34, 1)',
+                            'rgba(231, 76, 60, 1)',
+                            'rgba(149, 165, 166, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Form submission handling
+            document.getElementById('participationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simulate form submission
+                const periodo = document.getElementById('periodo');
+                const depoimento = document.getElementById('depoimento');
+                
+                if (periodo.value && depoimento.value) {
+                    alert('Obrigado por compartilhar sua experiência. Seu depoimento foi enviado com sucesso (anonimamente).');
+                    this.reset();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
